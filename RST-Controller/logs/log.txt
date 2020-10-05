@@ -1,0 +1,47 @@
+##Starting Matlab
+
+##Generating P(z)
+
+##Solving the system
+
+### Starting build procedure for model: Subsystem
+### Generating code and artifacts to 'Model specific' folder structure
+### Generating code into build folder: C:\Users\AK47\IdeaProjects\RST Controller\13-Jun-2020 14_35_13\Subsystem_ert_rtw
+### Invoking Target Language Compiler on Subsystem.rtw
+### Using System Target File: C:\Program Files\MATLAB\R2017b\rtw\c\ert\ert.tlc
+### Loading TLC function libraries
+......
+### Initial pass through model to cache user defined code
+.
+### Caching model source code
+.....................
+### Writing header file Subsystem.h
+.
+### Writing header file rtwtypes.h
+### Writing source file Subsystem.c
+### Writing source file ert_main.c
+### TLC code generation complete.
+### Creating HTML report file Subsystem_codegen_rpt.html
+### Using toolchain: LCC-win64 v2.4.1 | gmake (64-bit Windows)
+### Creating 'C:\Users\AK47\IdeaProjects\RST Controller\13-Jun-2020 14_35_13\Subsystem_ert_rtw\Subsystem.mk' ...
+### Building 'Subsystem': "C:\PROGRA~1\MATLAB\R2017b\bin\win64\gmake"  -f Subsystem.mk all
+ 
+C:\Users\AK47\IdeaProjects\RST Controller\13-Jun-2020 14_35_13\Subsystem_ert_rtw>set MATLAB=C:\Program Files\MATLAB\R2017b  
+ 
+C:\Users\AK47\IdeaProjects\RST Controller\13-Jun-2020 14_35_13\Subsystem_ert_rtw>cd .  
+ 
+C:\Users\AK47\IdeaProjects\RST Controller\13-Jun-2020 14_35_13\Subsystem_ert_rtw>if "" == "" ("C:\PROGRA~1\MATLAB\R2017b\bin\win64\gmake"  -f Subsystem.mk all )  else ("C:\PROGRA~1\MATLAB\R2017b\bin\win64\gmake"  -f Subsystem.mk  )  
+"C:/PROGRA~1/MATLAB/R2017b/sys/lcc64/lcc64/bin/lcc64" -c -w -noregistrylookup -nodeclspec -IC:/PROGRA~1/MATLAB/R2017b/sys/lcc64/lcc64/include64 -DTERMFCN=0 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DMODEL=Subsystem -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -IC:/Users/AK47/IDEAPR~1/RSTCON~1/13-JUN~1 -IC:/PROGRA~1/MATLAB/R2017b/simulink/include/sf_runtime -IC:/Users/AK47/IDEAPR~1/RSTCON~1/13-JUN~1/Subsystem_ert_rtw -IC:/PROGRA~1/MATLAB/R2017b/extern/include -IC:/PROGRA~1/MATLAB/R2017b/simulink/include -IC:/PROGRA~1/MATLAB/R2017b/rtw/c/src -IC:/PROGRA~1/MATLAB/R2017b/rtw/c/src/ext_mode/common -IC:/PROGRA~1/MATLAB/R2017b/rtw/c/ert -Fo"Subsystem.obj" "Subsystem.c" 
+"C:/PROGRA~1/MATLAB/R2017b/sys/lcc64/lcc64/bin/lcc64" -c -w -noregistrylookup -nodeclspec -IC:/PROGRA~1/MATLAB/R2017b/sys/lcc64/lcc64/include64 -DTERMFCN=0 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=0 -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTID01EQ=0 -DMODEL=Subsystem -DNUMST=1 -DNCSTATES=0 -DHAVESTDIO -IC:/Users/AK47/IDEAPR~1/RSTCON~1/13-JUN~1 -IC:/PROGRA~1/MATLAB/R2017b/simulink/include/sf_runtime -IC:/Users/AK47/IDEAPR~1/RSTCON~1/13-JUN~1/Subsystem_ert_rtw -IC:/PROGRA~1/MATLAB/R2017b/extern/include -IC:/PROGRA~1/MATLAB/R2017b/simulink/include -IC:/PROGRA~1/MATLAB/R2017b/rtw/c/src -IC:/PROGRA~1/MATLAB/R2017b/rtw/c/src/ext_mode/common -IC:/PROGRA~1/MATLAB/R2017b/rtw/c/ert -Fo"ert_main.obj" "ert_main.c" 
+C:/PROGRA~1/MATLAB/R2017b/bin/win64/createResponseFile.exe 1  Subsystem.rsp Subsystem.obj 
+"### Creating standalone executable "../Subsystem.exe" ..." 
+"C:/PROGRA~1/MATLAB/R2017b/sys/lcc64/lcc64/bin/lcclnk64" -s -LC:/PROGRA~1/MATLAB/R2017b/sys/lcc64/lcc64/lib64  -o ../Subsystem.exe @Subsystem.rsp ert_main.obj   
+"### Created: ../Subsystem.exe" 
+"### Successfully generated all binary outputs." 
+ 
+C:\Users\AK47\IdeaProjects\RST Controller\13-Jun-2020 14_35_13\Subsystem_ert_rtw>exit /B 0  
+### Successful completion of build procedure for model: Subsystem
+##Creating header files
+
+##Creating header files
+

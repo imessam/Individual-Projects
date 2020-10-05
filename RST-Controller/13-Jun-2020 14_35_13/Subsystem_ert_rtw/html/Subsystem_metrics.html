@@ -1,0 +1,1141 @@
+<!--
+  ~ Copyright (c) 2020. Mohamed Essam Abdelfatah
+  -->
+
+<html>
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="rtwreport.css" rel="stylesheet" type="text/css"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <script language="JavaScript" src="rtwshrink.js" type="text/javascript"></script>
+    <title>
+        Static Code Metrics Report
+    </title>
+
+</head>
+<body onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdCodeMetrics'); else local_onload();}} catch(err) {};">
+<h1>
+    Static Code Metrics Report
+</h1>
+<div>
+    <p>
+        The static code metrics report provides statistics of the generated code. Metrics are estimated from static
+        analysis of the generated code using the C data types specified in the 'Device details' section of the <b>Configuration
+        Parameter > Hardware Implementation</b> pane: <b>char</b> 8, <b>short</b> 16, <b>int</b> 32, <b>long</b> 32, <b>float</b>
+        32, <b>double</b> 64, <b>pointer</b> 32 bits. If your model contains a Variant block, the Static Code Metrics
+        Report does not contain data for the inactive variant. Actual object code metrics might differ due to target
+        specific compiler and platform settings. Consult the <b>Code Generation Advisor</b><a
+            href="matlab:helpview([docroot '/toolbox/ecoder/helptargets.map'], 'code_gen_advisor')" name="MATLAB_link"
+            style="text-decoration: none">
+        <img src="help.png" style="border:none;cursor:pointer" title="Open Code Generation Advisor help">
+
+        </img>
+
+    </a>
+        for options to improve code efficiency.
+    </p>
+
+</div>
+<div>
+    <h3>
+        Table of Contents
+    </h3>
+    <ol>
+        <li>
+            <a href="#sec_File_Information"
+               onclick="top.rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_001_control'), 'rtwIdCodeMetrics_table_001')">
+                File Information
+            </a>
+
+        </li>
+        <li>
+            <a href="#sec_Global_Variables"
+               onclick="top.rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_002_control'), 'rtwIdCodeMetrics_table_002')">
+                Global Variables
+            </a>
+
+        </li>
+        <li>
+            <a href="#sec_Function_Information"
+               onclick="top.rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_005_control'), 'rtwIdCodeMetrics_table_005')">
+                Function Information
+            </a>
+
+        </li>
+
+    </ol>
+
+</div>
+<h3 id="sec_File_Information" name="sec_File_Information">
+    1. File Information <span id="rtwIdCodeMetrics_table_001_control"
+                              onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_001', false)"
+                              style="cursor:pointer;font-weight:normal;" title="Click to shrink or expand section"><span
+        class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table border="0" id="rtwIdCodeMetrics_table_001" name="rtwIdCodeMetrics_table_001" width="100%">
+    <tr>
+        <td align="left" valign="top">
+            <table border="0" width="100%">
+                <tr>
+                    <td align="left" valign="top">
+                        <p>
+                            <span id="button_fileInfo_summary_table" name="button_fileInfo_summary_table"
+                                  onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'fileInfo_summary_table', true)"
+                                  style="cursor:pointer;font-family:monospace;font-weight:normal;"
+                                  title="Click to shrink or expand tree"><span class="shrink-button">[-]</span></span>
+                            Summary (excludes ert_main.c)
+                        </p>
+                        <table border="0" cellpadding="0" id="fileInfo_summary_table" name="fileInfo_summary_table"
+                               width="50%">
+                            <tr>
+                                <td align="left" valign="top" width="4%">
+                                    <span style="white-space:nowrap"
+                                          title="Number of source files excluding ert_main.c.">Number of .c files</span>
+                                </td>
+                                <td align="left" valign="top" width="4%">
+                                    :
+                                </td>
+                                <td align="right" valign="top" width="4%">
+                                    1
+                                </td>
+                                <td align="right" valign="top" width="86%">
+                                    &#160;
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top" width="4%">
+                                    <span style="white-space:nowrap"
+                                          title="Number of header files.">Number of .h files</span>
+                                </td>
+                                <td align="left" valign="top" width="4%">
+                                    :
+                                </td>
+                                <td align="right" valign="top" width="4%">
+                                    2
+                                </td>
+                                <td align="right" valign="top" width="86%">
+                                    &#160;
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top" width="4%">
+                                    <span title="Lines of code excluding comments and blank lines">Lines of code</span>
+                                </td>
+                                <td align="left" valign="top" width="4%">
+                                    :
+                                </td>
+                                <td align="right" valign="top" width="4%">
+                                    103
+                                </td>
+                                <td align="right" valign="top" width="86%">
+                                    &#160;
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top" width="4%">
+                                    <span style="white-space:nowrap"
+                                          title="Lines including source code, comments, and blank lines.">Lines</span>
+                                </td>
+                                <td align="left" valign="top" width="4%">
+                                    :
+                                </td>
+                                <td align="right" valign="top" width="4%">
+                                    289
+                                </td>
+                                <td align="right" valign="top" width="86%">
+                                    &#160;
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        <p>
+                            <span id="button_fileInfo_detail_table" name="button_fileInfo_detail_table"
+                                  onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'fileInfo_detail_table', true)"
+                                  style="cursor:pointer;font-family:monospace;font-weight:normal;"
+                                  title="Click to shrink or expand tree"><span class="shrink-button">[-]</span></span>
+                            File details
+                        </p>
+                        <table border="1" cellpadding="2" id="fileInfo_detail_table" name="fileInfo_detail_table"
+                               width="100%">
+                            <tr style="background-color: #eeeeff">
+                                <td align="left" style="border-style: none" valign="top" width="33%">
+                                    <b>
+                                        <span style="white-space:nowrap"
+                                              title="Files sorted in descending order by number of lines of code.">File Name</span>
+                                    </b>
+
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    <b>
+                                        <span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+                                    </b>
+
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    <b>
+                                        <span style="white-space:nowrap"
+                                              title="Lines including source code, comments, and blank lines.">Lines</span>
+                                    </b>
+
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    <b>
+                                        <span style="white-space:nowrap"
+                                              title="Timestamp of the file">Generated On</span>
+                                    </b>
+
+                                </td>
+
+                            </tr>
+                            <tr style="background-color: #ffffff">
+                                <td align="left" style="border-style: none" valign="top" width="33%">
+                                    <a class="code2code" href="rtwtypes_h.html">
+                                        rtwtypes.h
+                                    </a>
+
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    44
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    103
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    06/13/2020 2:36 PM
+                                </td>
+
+                            </tr>
+                            <tr style="background-color: #eeeeff">
+                                <td align="left" style="border-style: none" valign="top" width="33%">
+                                    <a class="code2code" href="Subsystem_h.html">
+                                        Subsystem.h
+                                    </a>
+
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    35
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    103
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    06/13/2020 2:36 PM
+                                </td>
+
+                            </tr>
+                            <tr style="background-color: #ffffff">
+                                <td align="left" style="border-style: none" valign="top" width="33%">
+                                    <a class="code2code" href="Subsystem_c.html">
+                                        Subsystem.c
+                                    </a>
+
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    24
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    83
+                                </td>
+                                <td align="right" style="border-style: none" valign="top" width="22%">
+                                    06/13/2020 2:36 PM
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </td>
+
+    </tr>
+
+</table>
+<h3 id="sec_Global_Variables" name="sec_Global_Variables">
+    2. Global Variables <span id="rtwIdCodeMetrics_table_002_control"
+                              onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_002', false)"
+                              style="cursor:pointer;font-weight:normal;" title="Click to shrink or expand section"><span
+        class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table border="0" id="rtwIdCodeMetrics_table_002" name="rtwIdCodeMetrics_table_002" width="100%">
+    <tr>
+        <td align="left" valign="top">
+            Global variables defined in the generated code.
+        </td>
+
+    </tr>
+    <tr>
+        <td align="left" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="left" valign="top">
+                        <table border="1" cellpadding="0" cellspacing="0" id="globalvarInfo_table"
+                               name="globalvarInfo_table" width="100%">
+                            <tr style="background-color: #ffffff">
+                                <td align="left" style="border-style: none" valign="top" width="100%">
+                                    <table border="0" cellpadding="0" cellspacing="0" class="treeTable" width="100%">
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table border="0" cellpadding="2" width="100%">
+                                                    <tr style="background-color: #eeeeff">
+                                                        <td align="left" style="border-style: none" valign="top"
+                                                            width="33%">
+                                                            <b>
+                                                                <span title="Global variables sorted by the maximum size in bytes.">Global Variable</span>
+                                                            </b>
+
+                                                        </td>
+                                                        <td align="right" style="border-style: none" valign="top"
+                                                            width="22%">
+                                                            <b>
+                                                                <span title="Global variable size in bytes.">Size (bytes)</span>
+                                                            </b>
+
+                                                        </td>
+                                                        <td align="right" style="border-style: none" valign="top"
+                                                            width="22%">
+                                                            <b>
+                                                                <span title="Total number of potential reads and writes for this global variable">Reads / Writes</span>
+                                                            </b>
+
+                                                        </td>
+                                                        <td align="right" style="border-style: none" valign="top"
+                                                            width="22%">
+                                                            <b>
+                                                                <span title="Maximum number of potential reads and writes in a function">Reads / Writes in a Function</span>
+                                                            </b>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="2" width="100%">
+                                                                <tr style="background-color: #ffffff">
+                                                                    <td align="left" style="border-style: none"
+                                                                        valign="top" width="33%">
+<span style="white-space:nowrap"><span id="button_globalvarInfo_table_sub3" name="button_globalvarInfo_table_sub3"
+                                       onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub3', true)"
+                                       style="cursor:pointer;font-family:monospace;font-weight:normal;"
+                                       title="Click to shrink or expand tree"><span
+        class="shrink-button">[+]</span></span> <a class="code2code" href="Subsystem_c.html#var_rtDW">
+rtDW
+</a>
+</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        48
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        15<span
+                                                                            style="font-family:Courier">&#160;</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        15<span
+                                                                            style="font-family:Courier">&#160;</span>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                   id="globalvarInfo_table_sub3"
+                                                                   name="globalvarInfo_table_sub3"
+                                                                   style="display: none; border-style: none"
+                                                                   width="100%">
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table cellpadding="2"
+                                                                               style="background-color: #eeeeff"
+                                                                               width="100%">
+                                                                            <tr>
+                                                                                <td align="left" width="33.33%"><span
+                                                                                        style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span
+                                                                                        style="font-family:monospace">&#160;&#160;</span>&#160; Tz_states</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">16</td>
+                                                                                <td align="right" width="22.22%">5<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">5<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table cellpadding="2"
+                                                                               style="background-color: #ffffff"
+                                                                               width="100%">
+                                                                            <tr>
+                                                                                <td align="left" width="33.33%"><span
+                                                                                        style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span
+                                                                                        style="font-family:monospace">&#160;&#160;</span>&#160; Rz_states</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">16</td>
+                                                                                <td align="right" width="22.22%">5<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">5<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table cellpadding="2"
+                                                                               style="background-color: #eeeeff"
+                                                                               width="100%">
+                                                                            <tr>
+                                                                                <td align="left" width="33.33%"><span
+                                                                                        style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span
+                                                                                        style="font-family:monospace">&#160;&#160;</span>&#160; uSz_states</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">16</td>
+                                                                                <td align="right" width="22.22%">5<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">5<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="2" width="100%">
+                                                                <tr style="background-color: #ffffff">
+                                                                    <td align="left" style="border-style: none"
+                                                                        valign="top" width="33%">
+<span style="white-space:nowrap"><span id="button_globalvarInfo_table_sub7" name="button_globalvarInfo_table_sub7"
+                                       onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub7', true)"
+                                       style="cursor:pointer;font-family:monospace;font-weight:normal;"
+                                       title="Click to shrink or expand tree"><span
+        class="shrink-button">[+]</span></span> <a class="code2code" href="Subsystem_c.html#var_rtU">
+rtU
+</a>
+</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        16
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        4<span style="font-family:Courier">&#160;</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        4<span style="font-family:Courier">&#160;</span>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                   id="globalvarInfo_table_sub7"
+                                                                   name="globalvarInfo_table_sub7"
+                                                                   style="display: none; border-style: none"
+                                                                   width="100%">
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table cellpadding="2"
+                                                                               style="background-color: #eeeeff"
+                                                                               width="100%">
+                                                                            <tr>
+                                                                                <td align="left" width="33.33%"><span
+                                                                                        style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span
+                                                                                        style="font-family:monospace">&#160;&#160;</span>&#160; In1</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">8</td>
+                                                                                <td align="right" width="22.22%">2<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">2<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table cellpadding="2"
+                                                                               style="background-color: #ffffff"
+                                                                               width="100%">
+                                                                            <tr>
+                                                                                <td align="left" width="33.33%"><span
+                                                                                        style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span
+                                                                                        style="font-family:monospace">&#160;&#160;</span>&#160; In2</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">8</td>
+                                                                                <td align="right" width="22.22%">2<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">2<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="2" width="100%">
+                                                                <tr style="background-color: #eeeeff">
+                                                                    <td align="left" style="border-style: none"
+                                                                        valign="top" width="33%">
+<span style="white-space:nowrap"><span id="button_globalvarInfo_table_sub10" name="button_globalvarInfo_table_sub10"
+                                       onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub10', true)"
+                                       style="cursor:pointer;font-family:monospace;font-weight:normal;"
+                                       title="Click to shrink or expand tree"><span
+        class="shrink-button">[+]</span></span> <a class="code2code" href="Subsystem_c.html#var_rtY">
+rtY
+</a>
+</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        8
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        1<span style="font-family:Courier">&#160;</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        1<span style="font-family:Courier">&#160;</span>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                   id="globalvarInfo_table_sub10"
+                                                                   name="globalvarInfo_table_sub10"
+                                                                   style="display: none; border-style: none"
+                                                                   width="100%">
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table cellpadding="2"
+                                                                               style="background-color: #ffffff"
+                                                                               width="100%">
+                                                                            <tr>
+                                                                                <td align="left" width="33.33%"><span
+                                                                                        style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span
+                                                                                        style="font-family:monospace">&#160;&#160;</span>&#160; Out1</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">8</td>
+                                                                                <td align="right" width="22.22%">1<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">1<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="2" width="100%">
+                                                                <tr style="background-color: #eeeeff">
+                                                                    <td align="left" style="border-style: none"
+                                                                        valign="top" width="33%">
+<span style="white-space:nowrap"><span id="button_globalvarInfo_table_sub12" name="button_globalvarInfo_table_sub12"
+                                       onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'globalvarInfo_table_sub12', true)"
+                                       style="cursor:pointer;font-family:monospace;font-weight:normal;"
+                                       title="Click to shrink or expand tree"><span
+        class="shrink-button">[+]</span></span> <a class="code2code" href="Subsystem_c.html#var_rtM_">
+rtM_
+</a>
+</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        4
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        <span title="The global variable is not directly used in any function.">0</span><span
+                                                                            style="font-family:Courier">*</span>
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="22%">
+                                                                        <span title="The global variable is not directly used in any function.">0</span><span
+                                                                            style="font-family:Courier">*</span>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                   id="globalvarInfo_table_sub12"
+                                                                   name="globalvarInfo_table_sub12"
+                                                                   style="display: none; border-style: none"
+                                                                   width="100%">
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table cellpadding="2"
+                                                                               style="background-color: #ffffff"
+                                                                               width="100%">
+                                                                            <tr>
+                                                                                <td align="left" width="33.33%"><span
+                                                                                        style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span
+                                                                                        style="font-family:monospace">&#160;&#160;</span>&#160; errorStatus</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">4</td>
+                                                                                <td align="right" width="22.22%">0<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                                <td align="right" width="22.22%">0<span
+                                                                                        style="font-family:Courier">&#160;</span>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td align="left" valign="top">
+                                                <table border="0" cellpadding="2" width="100%">
+                                                    <tr style="background-color: #eeeeff">
+                                                        <td align="left" style="border-style: none" valign="top"
+                                                            width="33%">
+                                                            <b>Total</b>
+                                                        </td>
+                                                        <td align="right" style="border-style: none" valign="top"
+                                                            width="22%">
+                                                            <b>76</b>
+                                                        </td>
+                                                        <td align="right" style="border-style: none" valign="top"
+                                                            width="22%">
+                                                            <b>20<span style="font-family:Courier">&#160;</span></b>
+                                                        </td>
+                                                        <td align="right" style="border-style: none" valign="top"
+                                                            width="22%">
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        * The global variable is not directly used in any function.
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </td>
+
+    </tr>
+
+</table>
+<h3 id="sec_Function_Information" name="sec_Function_Information">
+    3. Function Information <span id="rtwIdCodeMetrics_table_005_control"
+                                  onclick="if (top) if (top.rtwTableShrink) top.rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_005', false)"
+                                  style="cursor:pointer;font-weight:normal;"
+                                  title="Click to shrink or expand section"><span
+        class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table border="0" id="rtwIdCodeMetrics_table_005" name="rtwIdCodeMetrics_table_005" width="100%">
+    <tr>
+        <td align="left" valign="top">
+            View function metrics in a call tree format or table format. Accumulated stack numbers include the estimated
+            stack size of the function plus the maximum of the accumulated stack size of the subroutines that the
+            function calls.
+        </td>
+
+    </tr>
+    <tr>
+        <td align="left" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="left" valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" id="fcnInfo_calltree" name="fcnInfo_calltree"
+                               width="100%">
+                            <tr>
+                                <td align="left" valign="top">
+                                    View:Call Tree | <a
+                                        href="javascript:if (top) if (top.rtwSwitchView) top.rtwSwitchView(window.document,'fcnInfo_calltree', 'fcnInfo_table')"
+                                        title="List of functions in alphabetical order. The second column includes the callers of the functions.">
+                                    Table
+                                </a>
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table border="1" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr style="background-color: #ffffff">
+                                            <td align="left" style="border-style: none" valign="top" width="100%">
+                                                <table border="0" cellpadding="0" cellspacing="0" class="treeTable"
+                                                       id="fcnTreeView" width="100%">
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="2" width="100%">
+                                                                <tr style="background-color: #eeeeff">
+                                                                    <td align="left" style="border-style: none"
+                                                                        valign="top" width="37%">
+                                                                        <b>
+                                                                            <span title="Function name sorted by the maximum accumulated stack size.">Function Name</span>
+                                                                        </b>
+
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="12%">
+                                                                        <b>
+                                                                            <span title="Estimated stack size of the function plus the maximum of the accumulated stack size of its subroutines.">Accumulated Stack Size (bytes)</span>
+                                                                        </b>
+
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="12%">
+                                                                        <b>
+                                                                            <span title="Size of local variables in the function.">Self Stack Size (bytes)</span>
+                                                                        </b>
+
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="12%">
+                                                                        <b>
+                                                                            <span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+                                                                        </b>
+
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="12%">
+                                                                        <b>
+                                                                            <span style="white-space:nowrap"
+                                                                                  title="Lines including source code, comments, and blank lines.">Lines</span>
+                                                                        </b>
+
+                                                                    </td>
+                                                                    <td align="right" style="border-style: none"
+                                                                        valign="top" width="12%">
+                                                                        <b>
+                                                                            <span style="white-space:nowrap"
+                                                                                  title="Cyclomatic complexity">Complexity</span>
+                                                                        </b>
+
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="0" cellspacing="0" id=""
+                                                                   name="" style="border-style: none" width="100%">
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table border="0" cellpadding="2" width="100%">
+                                                                            <tr style="background-color: #ffffff">
+                                                                                <td align="left"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="37%">
+<span style="white-space:nowrap">&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<b><a
+        class="code2code" href="Subsystem_c.html#fcn_Subsystem_step" title="Subsystem_step">
+Subsystem_step
+</a>
+</b></span>
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    8
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    8
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    12
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    37
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    1
+                                                                                </td>
+
+                                                                            </tr>
+
+                                                                        </table>
+
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td align="left" valign="top">
+                                                            <table border="0" cellpadding="0" cellspacing="0" id=""
+                                                                   name="" style="border-style: none" width="100%">
+                                                                <tr>
+                                                                    <td align="left" valign="top">
+                                                                        <table border="0" cellpadding="2" width="100%">
+                                                                            <tr style="background-color: #eeeeff">
+                                                                                <td align="left"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="37%">
+<span style="white-space:nowrap">&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<b><a
+        class="code2code" href="Subsystem_c.html#fcn_Subsystem_initialize" title="Subsystem_initialize">
+Subsystem_initialize
+</a>
+</b></span>
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    0
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    0
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    0
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    4
+                                                                                </td>
+                                                                                <td align="right"
+                                                                                    style="border-style: none"
+                                                                                    valign="top" width="12%">
+                                                                                    1
+                                                                                </td>
+
+                                                                            </tr>
+
+                                                                        </table>
+
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            </table>
+
+                                                        </td>
+
+                                                    </tr>
+
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td align="left" valign="top">
+                        <table border="0" cellpadding="0" cellspacing="0" id="fcnInfo_table" name="fcnInfo_table"
+                               style="display: none" width="100%">
+                            <tr>
+                                <td align="left" valign="top">
+                                    View: <a
+                                        href="javascript:if (top) if (top.rtwSwitchView) top.rtwSwitchView(window.document,'fcnInfo_table', 'fcnInfo_calltree')"
+                                        title="Browse call graph in a call tree format.">
+                                    Call Tree
+                                </a>
+                                    | Table
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top">
+                                    <table border="1" cellpadding="2" class="treeTable" id="fcnTableView" width="100%">
+                                        <tr style="background-color: #eeeeff">
+                                            <td align="left" style="border-style: none" valign="top" width="22%">
+                                                <b>
+                                                    <span title="Function name sorted alphabetically">Function Name</span>
+                                                </b>
+
+                                            </td>
+                                            <td align="left" style="border-style: none" valign="top" width="22%">
+                                                <b>
+                                                    <span title="List of functions calling the function in the corresponding first column. The number of call sites is included in parentheses.">Called By (number of call sites)</span>
+                                                </b>
+
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                <b>
+                                                    <span title="Estimated stack size of the function plus the maximum of the accumulated stack size of its subroutines.">Accumulated Stack Size (bytes)</span>
+                                                </b>
+
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                <b>
+                                                    <span title="Size of local variables in the function.">Self Stack Size (bytes)</span>
+                                                </b>
+
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                <b>
+                                                    <span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+                                                </b>
+
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                <b>
+                                                    <span style="white-space:nowrap"
+                                                          title="Lines including source code, comments, and blank lines.">Lines</span>
+                                                </b>
+
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                <b>
+                                                    <span style="white-space:nowrap" title="Cyclomatic complexity">Complexity</span>
+                                                </b>
+
+                                            </td>
+
+                                        </tr>
+                                        <tr style="background-color: #ffffff">
+                                            <td align="left" style="border-style: none" valign="top" width="22%">
+                                                <a class="code2code" href="Subsystem_c.html#fcn_Subsystem_initialize"
+                                                   title="Subsystem_initialize">
+                                                    Subsystem_initialize
+                                                </a>
+
+                                            </td>
+                                            <td align="left" style="border-style: none" valign="top" width="22%">
+                                                &#160;
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                0
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                0
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                0
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                4
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                1
+                                            </td>
+
+                                        </tr>
+                                        <tr style="background-color: #eeeeff">
+                                            <td align="left" style="border-style: none" valign="top" width="22%">
+                                                <a class="code2code" href="Subsystem_c.html#fcn_Subsystem_step"
+                                                   title="Subsystem_step">
+                                                    Subsystem_step
+                                                </a>
+
+                                            </td>
+                                            <td align="left" style="border-style: none" valign="top" width="22%">
+                                                &#160;
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                8
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                8
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                12
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                37
+                                            </td>
+                                            <td align="right" style="border-style: none" valign="top" width="11%">
+                                                1
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+
+                            </tr>
+
+                        </table>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </td>
+
+    </tr>
+
+</table>
+
+</body>
+
+</html>

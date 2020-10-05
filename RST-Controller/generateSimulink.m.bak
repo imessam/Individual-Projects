@@ -1,0 +1,94 @@
+function [Ts,R,S,T]=generateModel(Ts,R,S,T)
+
+%global it_counter;
+%it_counter=it_counter+1;
+c=clock;
+name=sprintf('System_%d%02d%02d_%02d%02d_%02d', c(1), c(2), c(3), c(4), c(5), round(c(6)));
+
+sim_time=100; t_ref=5; t_dist=50;
+str_Ts=num2str(Ts);
+x=0; y=0;
+sys=new_system(name);
+set_param(name, 'stoptime',num2str(sim_time));
+x=x+0; y=y+100;%step position
+add_block('simulink/Sources/Step', [name '/Reference'], 'position',[x, y, x+30, y+30],...
+    'time',num2str(t_ref*Ts), 'sampletime',str_Ts);
+x=x+30;%step width
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x=x+35;%spacing
+add_block('simulink/Discrete/Discrete Filter', [name '/T(z)'], 'position',[x, y, x+195, y+30],...
+    'numerator',['[' num2str(T) ']'], 'denominator','[1]', 'sampletime',str_Ts);
+x=x+195;%T width
+add_line(name, 'Bm(z)//Am(z)/1', 'T(z)/1');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+x=x+25;%spacing
+add_block('simulink/Math Operations/Sum', [name '/Sum1'], 'position',[x, y+5, x+20, y+5+20],...
+    'inputs','|+-');
+x=x+20;%sum width
+add_line(name, 'T(z)/1', 'Sum1/1');
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x=x+35;%spacing
+add_block('simulink/Discrete/Discrete Filter', [name '/1//S(z)'], 'position',[x, y, x+195, y+30],...
+    'numerator','[1]', 'denominator',['[' num2str(S) ']'], 'sampletime',str_Ts);
+x=x+195;%S width
+add_line(name, '1//Hs(z)/1', '1//S(z)/1');
+%add_line(name, 'Sum1/1', '1//S(z)/1');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+x=x+330;%make space for possible continuous plant
+add_block('simulink/Math Operations/Sum', [name '/Sum2'], 'position',[x, y+5, x+20, y+5+20],...
+    'inputs','++|');
+x=x+20;%sum width
+
+x=x-285;%return till after S
+%discrete plant
+
+
+
+x=x+35;%spacing till sum2
+
+
+x=x+40;%spacing
+add_block('simulink/Continuous/Transport Delay', [name '/Disturbance Delay'], 'position',[x, 0, x+30, 0+30],...
+    'delaytime',num2str(t_dist*Ts));
+x=x+30;%delay width
+add_line(name, 'Disturbance/1', 'Disturbance Delay/1');
+add_line(name, 'Disturbance Delay/1', 'Sum2/1');
+
+x=x+125;%spacing from dist. delay till mux
+add_block('simulink/Signal Routing/Mux', [name '/Mux'], 'position',[x, y-15, x+5, y-15+38]);
+x=x+5;%mux width
+
+x=x+35;%spacing
+add_block('simulink/Sinks/Scope', [name '/Scope'], 'position',[x, y, x+30, y+32]);
+add_line(name, '1//S(z)/1', 'Mux/1');
+add_line(name, 'Sum2/1', 'Mux/2');
+add_line(name, 'Mux/1', 'Scope/1');
+%add_line(name, 'Sum2/1', 'Scope/1');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%feedback blocks
+x=x-465; y=y+110;%from scope left edge to R
+block_R=add_block('simulink/Discrete/Discrete Filter', [name '/R(z)'], 'position',[x, y, x+195, y+30],...
+    'numerator',['[' num2str(R) ']'], 'denominator','[1]', 'sampletime',str_Ts, 'orientation','left');
+%all=get(get_param(block_R, 'handle'))
+x=x-195;%R width
+add_line(name, 'Sum2/1', 'R(z)/1');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+x=x-35;%spacing
+
+x=x-195;
+add_line(name, 'R(z)/1', 'Hr(z)/1');
+add_line(name, 'Hr(z)/1)', 'Sum1/2');
+%add_line(name, 'R(z)/1)', 'Sum1/2');
+open_system(sys);
+%clear;

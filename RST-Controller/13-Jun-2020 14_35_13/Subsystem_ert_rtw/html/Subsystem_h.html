@@ -1,0 +1,263 @@
+<!--
+  ~ Copyright (c) 2020. Mohamed Essam Abdelfatah
+  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="./js/coder_app.js" type="text/javascript"></script>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <script src="./rtwreport_utils.js" type="text/javascript"></script>
+    <script src="./rtwannotate.js" type="text/javascript"></script>
+    <link href="./css/coder_app.css" rel="stylesheet" type="text/css"/>
+</head>
+<body onload="srcFileOnload();">
+<pre id="code">
+<table class="code" id="codeTbl">
+<tr id="1" name="1">
+<td><a class='ln' id="l1">1</a></td><td><span class="ct">/*</span></td></tr>
+<tr id="2" name="2">
+<td><a class='ln' id="l2">2</a></td><td><span class="ct"> * File: Subsystem.h</span></td></tr>
+<tr id="3" name="3">
+<td><a class='ln' id="l3">3</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="4" name="4">
+<td><a class='ln' id="l4">4</a></td><td><span
+        class="ct"> * Code generated for Simulink model 'Subsystem'.</span></td></tr>
+<tr id="5" name="5">
+<td><a class='ln' id="l5">5</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="6" name="6">
+<td><a class='ln' id="l6">6</a></td><td><span class="ct"> * Model version                  : 1.1</span></td></tr>
+<tr id="7" name="7">
+<td><a class='ln' id="l7">7</a></td><td><span
+        class="ct"> * Simulink Coder version         : 8.13 (R2017b) 24-Jul-2017</span></td></tr>
+<tr id="8" name="8">
+<td><a class='ln' id="l8">8</a></td><td><span
+        class="ct"> * C/C++ source code generated on : Sat Jun 13 14:36:13 2020</span></td></tr>
+<tr id="9" name="9">
+<td><a class='ln' id="l9">9</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="10" name="10">
+<td><a class='ln' id="l10">10</a></td><td><span class="ct"> * Target selection: ert.tlc</span></td></tr>
+<tr id="11" name="11">
+<td><a class='ln' id="l11">11</a></td><td><span class="ct"> * Embedded hardware selection: NXP-&gt;Cortex-M4</span></td></tr>
+<tr id="12" name="12">
+<td><a class='ln' id="l12">12</a></td><td><span class="ct"> * Code generation objectives:</span></td></tr>
+<tr id="13" name="13">
+<td><a class='ln' id="l13">13</a></td><td><span class="ct"> *    1. Execution efficiency</span></td></tr>
+<tr id="14" name="14">
+<td><a class='ln' id="l14">14</a></td><td><span class="ct"> *    2. RAM efficiency</span></td></tr>
+<tr id="15" name="15">
+<td><a class='ln' id="l15">15</a></td><td><span class="ct"> * Validation result: Not run</span></td></tr>
+<tr id="16" name="16">
+<td><a class='ln' id="l16">16</a></td><td><span class="ct"> */</span></td></tr>
+<tr id="17" name="17">
+<td><a class='ln' id="l17">17</a></td><td></td></tr>
+<tr id="18" name="18">
+<td><a class='ln' id="l18">18</a></td><td><span class="pp">#ifndef</span> <a class="tk" id="18c9">RTW_HEADER_Subsystem_h_</a></td></tr>
+<tr id="19" name="19">
+<td><a class='ln' id="l19">19</a></td><td><span class="pp">#define</span> <a class="tk" id="19c9">RTW_HEADER_Subsystem_h_</a></td></tr>
+<tr id="20" name="20">
+<td><a class='ln' id="l20">20</a></td><td><span class="pp">#ifndef</span> <a class="tk" id="20c9">Subsystem_COMMON_INCLUDES_</a></td></tr>
+<tr id="21" name="21">
+<td><a class='ln' id="l21">21</a></td><td><span class="pp"># define</span> <a class="tk" id="21c10">Subsystem_COMMON_INCLUDES_</a></td></tr>
+<tr id="22" name="22">
+<td><a class='ln' id="l22">22</a></td><td><span class="pp">#include "rtwtypes.h"</span></td></tr>
+<tr id="23" name="23">
+<td><a class='ln' id="l23">23</a></td><td><span class="pp">#endif</span>                                 <span
+        class="ct">/* Subsystem_COMMON_INCLUDES_ */</span></td></tr>
+<tr id="24" name="24">
+<td><a class='ln' id="l24">24</a></td><td></td></tr>
+<tr id="25" name="25">
+<td><a class='ln' id="l25">25</a></td><td><span
+        class="ct">/* Macros for accessing real-time model data structure */</span></td></tr>
+<tr id="26" name="26">
+<td><a class='ln' id="l26">26</a></td><td><span class="pp">#ifndef</span> <a class="tk" id="26c9">rtmGetErrorStatus</a></td></tr>
+<tr id="27" name="27">
+<td><a class='ln' id="l27">27</a></td><td><span class="pp"># define</span> <a class="tk"
+                                                                              id="27c10">rtmGetErrorStatus</a>(<a
+        class="tk" id="27c28">rtm</a>)        ((<a class="tk" id="27c42">rtm</a>)-&gt;<a class="tk" id="27c48">errorStatus</a>)</td></tr>
+<tr id="28" name="28">
+<td><a class='ln' id="l28">28</a></td><td><span class="pp">#endif</span></td></tr>
+<tr id="29" name="29">
+<td><a class='ln' id="l29">29</a></td><td></td></tr>
+<tr id="30" name="30">
+<td><a class='ln' id="l30">30</a></td><td><span class="pp">#ifndef</span> <a class="tk" id="30c9">rtmSetErrorStatus</a></td></tr>
+<tr id="31" name="31">
+<td><a class='ln' id="l31">31</a></td><td><span class="pp"># define</span> <a class="tk"
+                                                                              id="31c10">rtmSetErrorStatus</a>(<a
+        class="tk" id="31c28">rtm</a>, <a class="tk" id="31c33">val</a>)   ((<a class="tk" id="31c42">rtm</a>)-&gt;<a
+        class="tk" id="31c48">errorStatus</a> = (<a class="tk" id="31c63">val</a>))</td></tr>
+<tr id="32" name="32">
+<td><a class='ln' id="l32">32</a></td><td><span class="pp">#endif</span></td></tr>
+<tr id="33" name="33">
+<td><a class='ln' id="l33">33</a></td><td></td></tr>
+<tr id="34" name="34">
+<td><a class='ln' id="l34">34</a></td><td><span class="ct">/* Forward declaration for rtModel */</span></td></tr>
+<tr id="35" name="35">
+<td><a class='ln' id="l35">35</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <a class="tk"
+                                                                                                            id="35c16">tag_RTM</a> <a
+        class="tk" id="35c24">RT_MODEL</a>;</td></tr>
+<tr id="36" name="36">
+<td><a class='ln' id="l36">36</a></td><td></td></tr>
+<tr id="37" name="37">
+<td><a class='ln' id="l37">37</a></td><td><span class="ct">/* Block signals and states (auto storage) for system '<a
+        blk_line="37" class="ct blk">&lt;Root&gt;</a>' */</span></td></tr>
+<tr id="38" name="38">
+<td><a class='ln' id="l38">38</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span
+        class="br">{</span></td></tr>
+<tr id="39" name="39">
+<td><a class='ln' id="l39">39</a></td><td>  <a class="tk" id="39c3">real_T</a> <a class="tk" id="39c10">Tz_states</a>[2];                 <span
+        class="ct">/* '<a blk_line="39" class="ct blk">&lt;S1&gt;/T(z)</a>' */</span></td></tr>
+<tr id="40" name="40">
+<td><a class='ln' id="l40">40</a></td><td>  <a class="tk" id="40c3">real_T</a> <a class="tk" id="40c10">Rz_states</a>[2];                 <span
+        class="ct">/* '<a blk_line="40" class="ct blk">&lt;S1&gt;/R(z)</a>' */</span></td></tr>
+<tr id="41" name="41">
+<td><a class='ln' id="l41">41</a></td><td>  <a class="tk" id="41c3">real_T</a> <a class="tk" id="41c10">uSz_states</a>[2];                <span
+        class="ct">/* '<a blk_line="41" class="ct blk">&lt;S1&gt;/1//S(z)</a>' */</span></td></tr>
+<tr id="42" name="42">
+<td><a class='ln' id="l42">42</a></td><td><span class="br">}</span> <a class="tk" id="42c3">DW</a>;</td></tr>
+<tr id="43" name="43">
+<td><a class='ln' id="l43">43</a></td><td></td></tr>
+<tr id="44" name="44">
+<td><a class='ln' id="l44">44</a></td><td><span
+        class="ct">/* External inputs (root inport signals with auto storage) */</span></td></tr>
+<tr id="45" name="45">
+<td><a class='ln' id="l45">45</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span
+        class="br">{</span></td></tr>
+<tr id="46" name="46">
+<td><a class='ln' id="l46">46</a></td><td>  <a class="tk" id="46c3">real_T</a> <a class="tk" id="46c10">In1</a>;                          <span
+        class="ct">/* '<a blk_line="46" class="ct blk">&lt;Root&gt;/In1</a>' */</span></td></tr>
+<tr id="47" name="47">
+<td><a class='ln' id="l47">47</a></td><td>  <a class="tk" id="47c3">real_T</a> <a class="tk" id="47c10">In2</a>;                          <span
+        class="ct">/* '<a blk_line="47" class="ct blk">&lt;Root&gt;/In2</a>' */</span></td></tr>
+<tr id="48" name="48">
+<td><a class='ln' id="l48">48</a></td><td><span class="br">}</span> <a class="tk" id="48c3">ExtU</a>;</td></tr>
+<tr id="49" name="49">
+<td><a class='ln' id="l49">49</a></td><td></td></tr>
+<tr id="50" name="50">
+<td><a class='ln' id="l50">50</a></td><td><span class="ct">/* External outputs (root outports fed by signals with auto storage) */</span></td></tr>
+<tr id="51" name="51">
+<td><a class='ln' id="l51">51</a></td><td><span class="kw">typedef</span> <span class="kw">struct</span> <span
+        class="br">{</span></td></tr>
+<tr id="52" name="52">
+<td><a class='ln' id="l52">52</a></td><td>  <a class="tk" id="52c3">real_T</a> <a class="tk" id="52c10">Out1</a>;                         <span
+        class="ct">/* '<a blk_line="52" class="ct blk">&lt;Root&gt;/Out1</a>' */</span></td></tr>
+<tr id="53" name="53">
+<td><a class='ln' id="l53">53</a></td><td><span class="br">}</span> <a class="tk" id="53c3">ExtY</a>;</td></tr>
+<tr id="54" name="54">
+<td><a class='ln' id="l54">54</a></td><td></td></tr>
+<tr id="55" name="55">
+<td><a class='ln' id="l55">55</a></td><td><span class="ct">/* Real-time Model Data Structure */</span></td></tr>
+<tr id="56" name="56">
+<td><a class='ln' id="l56">56</a></td><td><span class="kw">struct</span> <a class="tk" id="56c8">tag_RTM</a> <span
+        class="br">{</span></td></tr>
+<tr id="57" name="57">
+<td><a class='ln' id="l57">57</a></td><td>  <span class="kw">const</span> <a class="tk" id="57c9">char_T</a> <a
+        class="tk" id="57c16">*</a> <span class="kw">volatile</span> <a class="tk" id="57c27">errorStatus</a>;</td></tr>
+<tr id="58" name="58">
+<td><a class='ln' id="l58">58</a></td><td><span class="br">}</span>;</td></tr>
+<tr id="59" name="59">
+<td><a class='ln' id="l59">59</a></td><td></td></tr>
+<tr id="60" name="60">
+<td><a class='ln' id="l60">60</a></td><td><span
+        class="ct">/* Block signals and states (auto storage) */</span></td></tr>
+<tr id="61" name="61">
+<td><a class='ln' id="l61">61</a></td><td><span class="kw">extern</span> <a class="tk" id="61c8">DW</a> <a class="tk"
+                                                                                                           id="61c11">rtDW</a>;</td></tr>
+<tr id="62" name="62">
+<td><a class='ln' id="l62">62</a></td><td></td></tr>
+<tr id="63" name="63">
+<td><a class='ln' id="l63">63</a></td><td><span
+        class="ct">/* External inputs (root inport signals with auto storage) */</span></td></tr>
+<tr id="64" name="64">
+<td><a class='ln' id="l64">64</a></td><td><span class="kw">extern</span> <a class="tk" id="64c8">ExtU</a> <a class="tk"
+                                                                                                             id="64c13">rtU</a>;</td></tr>
+<tr id="65" name="65">
+<td><a class='ln' id="l65">65</a></td><td></td></tr>
+<tr id="66" name="66">
+<td><a class='ln' id="l66">66</a></td><td><span class="ct">/* External outputs (root outports fed by signals with auto storage) */</span></td></tr>
+<tr id="67" name="67">
+<td><a class='ln' id="l67">67</a></td><td><span class="kw">extern</span> <a class="tk" id="67c8">ExtY</a> <a class="tk"
+                                                                                                             id="67c13">rtY</a>;</td></tr>
+<tr id="68" name="68">
+<td><a class='ln' id="l68">68</a></td><td></td></tr>
+<tr id="69" name="69">
+<td><a class='ln' id="l69">69</a></td><td><span class="ct">/* Model entry point functions */</span></td></tr>
+<tr id="70" name="70">
+<td><a class='ln' id="l70">70</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a class="tk"
+                                                                                                         id="70c13">Subsystem_initialize</a>(<span
+        class="kw">void</span>);</td></tr>
+<tr id="71" name="71">
+<td><a class='ln' id="l71">71</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a class="tk"
+                                                                                                         id="71c13">Subsystem_step</a>(<span
+        class="kw">void</span>);</td></tr>
+<tr id="72" name="72">
+<td><a class='ln' id="l72">72</a></td><td></td></tr>
+<tr id="73" name="73">
+<td><a class='ln' id="l73">73</a></td><td><span class="ct">/* Real-time Model object */</span></td></tr>
+<tr id="74" name="74">
+<td><a class='ln' id="l74">74</a></td><td><span class="kw">extern</span> <a class="tk" id="74c8">RT_MODEL</a> <a
+        class="tk" id="74c17">*</a><span class="kw">const</span> <a class="tk" id="74c24">rtM</a>;</td></tr>
+<tr id="75" name="75">
+<td><a class='ln' id="l75">75</a></td><td></td></tr>
+<tr id="76" name="76">
+<td><a class='ln' id="l76">76</a></td><td><span class="ct">/*-</span></td></tr>
+<tr id="77" name="77">
+<td><a class='ln' id="l77">77</a></td><td><span class="ct"> * The generated code includes comments that allow you to trace directly</span></td></tr>
+<tr id="78" name="78">
+<td><a class='ln' id="l78">78</a></td><td><span class="ct"> * back to the appropriate location in the model.  The basic format</span></td></tr>
+<tr id="79" name="79">
+<td><a class='ln' id="l79">79</a></td><td><span class="ct"> * is &lt;system&gt;/block_name, where system is the system number (uniquely</span></td></tr>
+<tr id="80" name="80">
+<td><a class='ln' id="l80">80</a></td><td><span class="ct"> * assigned by Simulink) and block_name is the name of the block.</span></td></tr>
+<tr id="81" name="81">
+<td><a class='ln' id="l81">81</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="82" name="82">
+<td><a class='ln' id="l82">82</a></td><td><span class="ct"> * Note that this particular code originates from a subsystem build,</span></td></tr>
+<tr id="83" name="83">
+<td><a class='ln' id="l83">83</a></td><td><span class="ct"> * and has its own system numbers different from the parent model.</span></td></tr>
+<tr id="84" name="84">
+<td><a class='ln' id="l84">84</a></td><td><span class="ct"> * Refer to the system hierarchy for this subsystem below, and use the</span></td></tr>
+<tr id="85" name="85">
+<td><a class='ln' id="l85">85</a></td><td><span class="ct"> * MATLAB hilite_system command to trace the generated code back</span></td></tr>
+<tr id="86" name="86">
+<td><a class='ln' id="l86">86</a></td><td><span class="ct"> * to the parent model.  For example,</span></td></tr>
+<tr id="87" name="87">
+<td><a class='ln' id="l87">87</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="88" name="88">
+<td><a class='ln' id="l88">88</a></td><td><span class="ct"> * hilite_system('rst/Subsystem')    - opens subsystem rst/Subsystem</span></td></tr>
+<tr id="89" name="89">
+<td><a class='ln' id="l89">89</a></td><td><span class="ct"> * hilite_system('rst/Subsystem/Kp') - opens and selects block Kp</span></td></tr>
+<tr id="90" name="90">
+<td><a class='ln' id="l90">90</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="91" name="91">
+<td><a class='ln' id="l91">91</a></td><td><span
+        class="ct"> * Here is the system hierarchy for this model</span></td></tr>
+<tr id="92" name="92">
+<td><a class='ln' id="l92">92</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="93" name="93">
+<td><a class='ln' id="l93">93</a></td><td><span class="ct"> * '<a blk_line="93" class="ct blk">&lt;Root&gt;</a>' : 'rst'</span></td></tr>
+<tr id="94" name="94">
+<td><a class='ln' id="l94">94</a></td><td><span class="ct"> * '<a blk_line="94" class="ct blk">&lt;S1&gt;</a>'   : 'rst/Subsystem'</span></td></tr>
+<tr id="95" name="95">
+<td><a class='ln' id="l95">95</a></td><td><span class="ct"> */</span></td></tr>
+<tr id="96" name="96">
+<td><a class='ln' id="l96">96</a></td><td><span class="pp">#endif</span>                                 <span
+        class="ct">/* RTW_HEADER_Subsystem_h_ */</span></td></tr>
+<tr id="97" name="97">
+<td><a class='ln' id="l97">97</a></td><td></td></tr>
+<tr id="98" name="98">
+<td><a class='ln' id="l98">98</a></td><td><span class="ct">/*</span></td></tr>
+<tr id="99" name="99">
+<td><a class='ln' id="l99">99</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<tr id="100" name="100">
+<td><a class='ln' id="l100">100</a></td><td><span class="ct"> *</span></td></tr>
+<tr id="101" name="101">
+<td><a class='ln' id="l101">101</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<tr id="102" name="102">
+<td><a class='ln' id="l102">102</a></td><td><span class="ct"> */</span></td></tr>
+<tr id="103" name="103">
+<td><a class='ln' id="l103">103</a></td><td></td></tr>
+</table>
+</pre>
+</body>
+</html>

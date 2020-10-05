@@ -1,0 +1,122 @@
+function [R S T]=control(w0, zeta,Ts, Az,Bz)
+[R S T]=solveRST(w0, zeta,Ts, Az,Bz);
+
+function P=z_polynomial(w0, zeta, Ts)
+s=w0*(-zeta+1i*sqrt(1-zeta*zeta));
+z=exp(s*Ts);
+rez=real(z); imz=imag(z);
+P=[1, -2*rez, rez*rez+imz*imz];
+
+
+function no_int=has_no_integrator(A)%finds if A has no integrator
+r=roots(A);
+sr=size(r);
+no_int=true;
+for k=1:sr(1)
+    if r(k)==1
+        no_int=false;
+    end
+end
+
+function [Ts B A Hr Hs dist P Bm Am]=acquire_data(w0, zeta,Ts, Az,Bz)
+c=clock;
+iteration_time=sprintf('%d-%d-%d %d:%d:%f', c(1), c(2), c(3), c(4), c(5), c(6))
+
+%Ts=1.0;
+BW=0;%rad/s
+%GET PLANT PTF
+
+               %discrete plant
+    %B=str2num(get(handles.edit5, 'string'));
+    %A=str2num(get(handles.edit6, 'string'));
+    B=Bz;
+    A=Az;
+
+%GET REGULATION P(z) & TRACKING Bm(z)/Am(z)
+%if get(handles.checkbox2, 'value')%continuous design criteria
+    %w0  =0.4;
+    %zeta=0.9;
+    P=z_polynomial(w0, zeta, Ts);
+    BW=max([BW w0]);
+    
+    %w0  =0.5
+    %zeta=0.9;
+    Am=z_polynomial(w0, zeta, Ts);
+    %set(handles.edit13, 'string',['[' num2str(Am) ']']);
+    BW=max([BW w0]);
+    
+    Bm=sum(Am);%Bm(z)=Am(1)
+   
+%else                            %discrete design criteria
+ %   P =str2num(get(handles.edit11, 'string'));
+  %  Am=str2num(get(handles.edit13, 'string'));
+	%Bm=str2num(get(handles.edit12, 'string'));
+%end
+
+Hr=1;
+Hs=1;
+distf=0;
+if distf==0
+    dist=[1 -1];
+else
+    dist=[1, -2*cos(2*pi*distf*Ts), 1];
+end
+
+
+
+
+
+function [R S T]= solveRST(w0, zeta,Ts, Az,Bz)%solve
+[Ts Bp Ap Hr Hs dist P Bm Am]=acquire_data(w0, zeta,Ts, Az,Bz);
+
+Bps=[]; Bpu=[];
+%don't cancel
+Bps=1; Bpu=Bp;
+
+
+%SOLUTION
+%Ap Hs S + Bp Hr R = P      (no zeros cancelled)
+S_has_integrator=has_no_integrator(Ap);
+Hs_full=[];
+if S_has_integrator
+    Hs_full=conv(Hs, [1 -1]);
+else
+    Hs_full=Hs;
+end
+A=conv(Ap, Hs_full)';
+B=conv(Bpu, Hr)';
+nA=size(A); nA=nA(1)-1;%vertical vector size, power of z = size-1
+nB=size(B); nB=nB(1)-1;
+A=padarray(A, nB-1, 0, 'post');
+B=padarray(B, nA-1, 0, 'post');
+M=[];
+for k=1:nB
+    M=[M A];
+    A=circshift(A, 1);
+end
+for k=(nB+1):(nB+nA)
+    M=[M B];
+    B=circshift(B, 1);
+end
+%M
+n=size(M);  n=n(1);%M is a square matrix
+nP=size(P); nP=nP(2);
+P_full=padarray(P', n-nP, 0, 'post');
+SR=M\P_full;
+
+%Extract R, S, T
+R=SR((nB+1):(nB+nA))';
+S=SR(1:nB)';
+if S_has_integrator
+    S=conv(S, [1, -1]);
+end
+S=conv(S, Bps);
+T=P/sum(Bpu);%(no zeros cancelled)
+
+
+R=conv(R, Hr);
+S=conv(S, Hs);
+P
+R
+S
+T

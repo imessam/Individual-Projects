@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<!--
+  ~ Copyright (c) 2020. Mohamed Essam Abdelfatah
+  -->
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+          minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+          fx:controller="sample.firstScene">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="437.0" minWidth="10.0" prefWidth="256.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="397.0" minWidth="10.0" prefWidth="344.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="192.0" minHeight="10.0" prefHeight="137.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="192.0" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="198.0" minHeight="10.0" prefHeight="126.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="54.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="70.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="71.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="62.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <Label fx:id="tsLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="155.0"
+               text="Ts:"/>
+        <TextField fx:id="tsIN" GridPane.columnIndex="1"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="73.0" text="w0 reg :"
+               GridPane.rowIndex="1"/>
+        <TextField fx:id="w0RegIN" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="151.0" text="zeta reg :"
+               GridPane.rowIndex="2"/>
+        <TextField fx:id="zetaRegIN" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="45.0" prefHeight="17.0"
+               prefWidth="73.0" text="w0 tr :" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <TextField fx:id="w0TrIN" layoutX="63.0" layoutY="41.0" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="82.0" prefHeight="17.0"
+               prefWidth="151.0" text="zeta tr :" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <TextField fx:id="zetaTrIN" layoutX="63.0" layoutY="78.0" GridPane.columnIndex="3"
+                   GridPane.rowIndex="2"/>
+        <Button fx:id="pzBTN" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                prefHeight="25.0" prefWidth="291.0" text="Generate P(z)" GridPane.columnSpan="2"
+                GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="5.0"/>
+            </GridPane.margin>
+        </Button>
+    </GridPane>
+    <GridPane GridPane.rowIndex="2">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="83.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="173.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0"/>
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <GridPane.margin>
+            <Insets top="10.0"/>
+        </GridPane.margin>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="172.0" text="P(z) :"/>
+        <TextField fx:id="pzIN" editable="false" prefHeight="25.0" prefWidth="144.0" GridPane.columnIndex="1"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="152.0" text="A(z) :"
+               GridPane.rowIndex="1"/>
+        <TextField fx:id="azIN" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="151.0" text="B(z) :"
+               GridPane.rowIndex="2"/>
+        <TextField fx:id="bzIN" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <Button fx:id="solveBTN" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                prefHeight="25.0" prefWidth="310.0" text="Solve" GridPane.columnSpan="2" GridPane.rowIndex="3">
+            <GridPane.margin>
+                <Insets left="5.0"/>
+            </GridPane.margin>
+        </Button>
+    </GridPane>
+    <GridPane prefHeight="100.0" prefWidth="321.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="63.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="281.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0"/>
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="152.0" text="S :"
+               GridPane.rowIndex="1"/>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="151.0" text="T :"
+               GridPane.rowIndex="2"/>
+        <TextField fx:id="tIN" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <GridPane.margin>
+                <Insets right="5.0"/>
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="sIN" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets right="5.0"/>
+            </GridPane.margin>
+        </TextField>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="R :"/>
+        <TextField fx:id="rIN" editable="false" prefHeight="25.0" prefWidth="203.0" GridPane.columnIndex="1">
+            <GridPane.margin>
+                <Insets right="5.0"/>
+            </GridPane.margin>
+        </TextField>
+    </GridPane>
+</GridPane>

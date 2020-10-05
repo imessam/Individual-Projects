@@ -1,0 +1,233 @@
+function [R S T]=control(w0, zeta,Ts, Az,Bz)
+setGlobalVar();
+DateString=getGlobalVar;
+str=['log ',DateString];
+diary (str)
+[R S T]=solveRST(w0, zeta,Ts, Az,Bz);
+diary off
+
+
+function setGlobalVar()
+global st
+st =  strrep(datestr(datetime('now')), ':', '_');
+
+function DateString = getGlobalVar
+global st
+DateString=st;
+
+
+function P=z_polynomial(w0, zeta, Ts)
+s=w0*(-zeta+1i*sqrt(1-zeta*zeta));
+z=exp(s*Ts);
+rez=real(z); imz=imag(z);
+P=[1, -2*rez, rez*rez+imz*imz];
+
+
+function no_int=has_no_integrator(A)%finds if A has no integrator
+r=roots(A);
+sr=size(r);
+no_int=true;
+for k=1:sr(1)
+    if r(k)==1
+        no_int=false;
+    end
+end
+
+function [Ts B A Hr Hs dist P Bm Am]=acquire_data(w0, zeta,Ts, Az,Bz)
+c=clock;
+iteration_time=sprintf('%d-%d-%d %d:%d:%f', c(1), c(2), c(3), c(4), c(5), c(6))
+
+%Ts=1.0;
+BW=0;%rad/s
+%GET PLANT PTF
+
+               %discrete plant
+    %B=str2num(get(handles.edit5, 'string'));
+    %A=str2num(get(handles.edit6, 'string'));
+    B=Bz;
+    A=Az;
+
+%GET REGULATION P(z) & TRACKING Bm(z)/Am(z)
+%if get(handles.checkbox2, 'value')%continuous design criteria
+    %w0  =0.4;
+    %zeta=0.9;
+    P=z_polynomial(w0, zeta, Ts);
+    BW=max([BW w0]);
+    
+    %w0  =0.5
+    %zeta=0.9;
+    Am=z_polynomial(w0, zeta, Ts);
+    %set(handles.edit13, 'string',['[' num2str(Am) ']']);
+    BW=max([BW w0]);
+    
+    Bm=sum(Am);%Bm(z)=Am(1)
+   
+%else                            %discrete design criteria
+ %   P =str2num(get(handles.edit11, 'string'));
+  %  Am=str2num(get(handles.edit13, 'string'));
+	%Bm=str2num(get(handles.edit12, 'string'));
+%end
+
+Hr=1;
+Hs=1;
+distf=0;
+if distf==0
+    dist=[1 -1];
+else
+    dist=[1, -2*cos(2*pi*distf*Ts), 1];
+end
+
+
+function [Ts,R,S,T]=generateSimulink(Ts, Bp, Ap,Bm, Am,R,S,T)
+
+%global it_counter;
+%it_counter=it_counter+1;
+c=clock;
+name=sprintf('System_%d%02d%02d_%02d%02d_%02d', c(1), c(2), c(3), c(4), c(5), round(c(6)));
+
+sim_time=100; t_ref=5; t_dist=50;
+str_Ts=num2str(Ts);
+x=0; y=0;
+sys=new_system(name);
+set_param(name, 'stoptime',num2str(sim_time));
+x=x+0; y=y+100;%step position
+add_block('simulink/Sources/Step', [name '/Reference'], 'position',[x, y, x+30, y+30],...
+    'time',num2str(t_ref*Ts), 'sampletime',str_Ts);
+x=x+30;%step width
+
+x=x+35;%spacing
+add_block('simulink/Discrete/Discrete Filter', [name '/Bm(z)//Am(z)'], 'position',[x, y, x+195, y+30],...
+    'numerator',['[' num2str(Bm) ']'], 'denominator',['[' num2str(Am) ']'], 'sampletime',str_Ts);
+x=x+195;%tracking width
+add_line(name, 'Reference/1', 'Bm(z)//Am(z)/1');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x=x+35;%spacing
+add_block('simulink/Discrete/Discrete Filter', [name '/T(z)'], 'position',[x, y, x+195, y+30],...
+    'numerator',['[' num2str(T) ']'], 'denominator','[1]', 'sampletime',str_Ts);
+x=x+195;%T width
+add_line(name, 'Bm(z)//Am(z)/1', 'T(z)/1');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+x=x+25;%spacing
+add_block('simulink/Math Operations/Sum', [name '/Sum1'], 'position',[x, y+5, x+20, y+5+20],...
+    'inputs','|+-');
+x=x+20;%sum width
+add_line(name, 'T(z)/1', 'Sum1/1');
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+x=x+35;%spacing
+add_block('simulink/Discrete/Discrete Filter', [name '/1//S(z)'], 'position',[x, y, x+195, y+30],...
+    'numerator','[1]', 'denominator',['[' num2str(S) ']'], 'sampletime',str_Ts);
+x=x+195;%S width
+add_line(name, 'Sum1/1', '1//S(z)/1');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+x=x+330;%make space for possible continuous plant
+
+
+x=x-285;%return till after S
+%discrete plant
+
+ add_block('simulink/Discrete/Discrete Filter', [name '/Bp(z)//Ap(z)'], 'position',[x, y, x+195, y+30],...
+        'numerator',['[' num2str(Bp) ']'], 'denominator',['[' num2str(Ap) ']'], 'sampletime',str_Ts);
+    x=x+195;%plant width
+    add_line(name, '1//S(z)/1', 'Bp(z)//Ap(z)/1');
+
+x=x+35;%spacing till sum2
+
+
+x=x+40;%spacing
+
+x=x+30;%delay width
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%feedback blocks
+x=x-465; y=y+110;%from scope left edge to R
+block_R=add_block('simulink/Discrete/Discrete Filter', [name '/R(z)'], 'position',[x, y, x+195, y+30],...
+    'numerator',['[' num2str(R) ']'], 'denominator','[1]', 'sampletime',str_Ts, 'orientation','left');
+%all=get(get_param(block_R, 'handle'))
+x=x-195;%R width
+add_line(name, 'Bp(z)//Ap(z)/1', 'R(z)/1');
+add_line(name, 'R(z)/1','Sum1/2');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+x=x-35;%spacing
+
+x=x-195;
+%Simulink.BlockDiagram.createSubsystem(find_system(sys));
+%Simulink.BlockDiagram.loadActiveConfigSet(sys, 'config.m');
+oldPath=pwd;
+newPath=getGlobalVar;
+mkdir (newPath);
+copyfile('config.m',newPath);
+cd(newPath);
+save_system(sys,'rst');
+%load_system('rst')
+blocks=find_system('rst');
+sub=[get_param(blocks{2}, 'handle'); get_param(blocks{5}, 'handle'); get_param(blocks{7}, 'handle'); get_param(blocks{8}, 'handle')];
+Simulink.BlockDiagram.createSubsystem(sub);
+Simulink.BlockDiagram.loadActiveConfigSet('rst', 'config.m');
+rtwbuild('rst/Subsystem');
+save_system('rst');
+close_system('rst');
+cd(oldPath);
+%clear;
+
+
+
+function [R S T]= solveRST(w0, zeta,Ts, Az,Bz)%solve
+[Ts Bp Ap Hr Hs dist P Bm Am]=acquire_data(w0, zeta,Ts, Az,Bz);
+
+Bps=[]; Bpu=[];
+%don't cancel
+Bps=1; Bpu=Bp;
+
+
+%SOLUTION
+%Ap Hs S + Bp Hr R = P      (no zeros cancelled)
+S_has_integrator=has_no_integrator(Ap);
+Hs_full=[];
+if S_has_integrator
+    Hs_full=conv(Hs, [1 -1]);
+else
+    Hs_full=Hs;
+end
+A=conv(Ap, Hs_full)';
+B=conv(Bpu, Hr)';
+nA=size(A); nA=nA(1)-1;%vertical vector size, power of z = size-1
+nB=size(B); nB=nB(1)-1;
+A=padarray(A, nB-1, 0, 'post');
+B=padarray(B, nA-1, 0, 'post');
+M=[];
+for k=1:nB
+    M=[M A];
+    A=circshift(A, 1);
+end
+for k=(nB+1):(nB+nA)
+    M=[M B];
+    B=circshift(B, 1);
+end
+%M
+n=size(M);  n=n(1);%M is a square matrix
+nP=size(P); nP=nP(2);
+P_full=padarray(P', n-nP, 0, 'post');
+SR=M\P_full;
+
+%Extract R, S, T
+R=SR((nB+1):(nB+nA))';
+S=SR(1:nB)';
+if S_has_integrator
+    S=conv(S, [1, -1]);
+end
+S=conv(S, Bps);
+T=P/sum(Bpu);%(no zeros cancelled)
+
+
+R=conv(R, Hr);
+S=conv(S, Hs);
+generateSimulink(Ts, Bp, Ap,Bm, Am,R,S,T);
