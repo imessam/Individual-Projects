@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2020.  Mohamed Essam Abdelfatah
+  -->
+
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="sample.EditorScene">
+    <center>
+        <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"/>
+        </StackPane>
+    </center>
+</BorderPane>
