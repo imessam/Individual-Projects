@@ -1,4 +1,5 @@
 import sys
+import re
 from Plotter import Plotter
 
 from PySide2.QtCore import *
@@ -19,13 +20,13 @@ class PlotterGUI(QWidget):
  
     def __init__(self):
         
+        self.qt_app = QApplication(sys.argv)
         
         QWidget.__init__(self)
         self.setWindowTitle('Plotter GUI')
         self.setMinimumWidth(400)
  
         self.init_labels()
-        self.init_validator()
         self.init_fields()
         self.init_canvas()
         self.init_btn()
@@ -41,22 +42,20 @@ class PlotterGUI(QWidget):
         self.function_label.setText("Function : ")
         self.min_label.setText("min : ")
         self.max_label.setText("max : ")
-        
-    def init_validator(self):
-        
-        qregx=QRegExp("[0-9]+")
-        self.validator=QRegExpValidator(qregx,self)
+
         
     def init_fields(self):
+        
+        self.wrongMinMax=False
+        self.wrongFn=False
         
         self.function_in=QLineEdit(self)
         self.min_in=QLineEdit(self)
         self.max_in=QLineEdit(self)
         
-        self.max_in.setValidator(self.validator)
-        self.min_in.setValidator(self.validator)
-        
+        self.min_in.textChanged[str].connect(self.textChanged)
         self.max_in.textChanged[str].connect(self.textChanged)
+        self.function_in.textChanged[str].connect(self.functionTextChanged)
         
     def init_canvas(self):
         
@@ -87,7 +86,56 @@ class PlotterGUI(QWidget):
     
     def textChanged(self):
         
-        self.max_in.setStyleSheet('background-color: red')
+        self.wrongMinMax=False
+        
+        if not(self.wrongFn):
+            self.plt_btn.clicked.disconnect()
+            self.plt_btn.clicked.connect(self.plot)
+        
+        self.min_in.setStyleSheet('color: green')
+        self.max_in.setStyleSheet('color: green')
+        
+
+        
+        if not(self.min_in.text().isnumeric()):
+            self.min_in.setStyleSheet('color: red')
+            self.plt_btn.clicked.disconnect()
+            self.plt_btn.clicked.connect(self.show_warning)
+            self.wrongMinMax=True
+            
+    
+        if not(self.max_in.text().isnumeric()):
+            self.max_in.setStyleSheet('color: red')
+            self.plt_btn.clicked.disconnect()
+            self.plt_btn.clicked.connect(self.show_warning)
+            self.wrongMinMax=True
+    
+    
+    def functionTextChanged(self):
+        
+        self.wrongFn=False
+        
+        if not(self.wrongMinMax):
+            self.plt_btn.clicked.disconnect()
+            self.plt_btn.clicked.connect(self.plot)
+        
+        self.function_in.setStyleSheet('color: green')
+        
+        reg="(([/])?([\+-\-])?(([0-9])+[*])?([a-zA-Z])+((\^)[\+-\-]?[0-9]+)?)+"
+        match=re.search(reg,self.function_in.text())
+        txtLen=len(self.function_in.text())
+         
+        if not(match==None): 
+            
+            regLen=match.span()[1]
+            
+            if not(txtLen==regLen):
+                
+                self.function_in.setStyleSheet('color: red')
+                self.plt_btn.clicked.disconnect()
+                self.plt_btn.clicked.connect(self.show_warning)
+                
+                self.wrongFn=True
     
     
     def plot(self):
@@ -101,11 +149,22 @@ class PlotterGUI(QWidget):
         plotter(func,minX,maxX,self.canvas.axes)   
         self.canvas.draw()
         
+    def show_warning(self):
+        
+        if(self.wrongMinMax):
+            self.warning_txt="min and max values should take integer values ! "
+            
+        elif(self.wrongFn):
+            self.warning_txt=" Function must be in this format : 2*x^0+x+2*x^2 or -x^-1/x^2 "
+            
+        QMessageBox.warning(self, "Wrong input", self.warning_txt)
+        
     
     def run(self):
         # Show the form
         self.show()
         # Run the qt application
+        self.qt_app.exec_()
         
         
 
@@ -125,10 +184,8 @@ class MplCanvas(FigureCanvasQTAgg):
         
         
 if __name__== "__main__":
-    qt_app = QApplication(sys.argv)
     app = PlotterGUI()
     app.run()
-    qt_app.exec_()
     
     
     
