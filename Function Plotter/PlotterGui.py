@@ -20,7 +20,6 @@ class PlotterGUI(QWidget):
  
     def __init__(self):
         
-        self.qt_app = QApplication(sys.argv)
         
         QWidget.__init__(self)
         self.setWindowTitle('Plotter GUI')
@@ -97,14 +96,14 @@ class PlotterGUI(QWidget):
         
 
         
-        if not(self.min_in.text().isnumeric()):
+        if not(self.min_in.text().strip('-').isnumeric()):
             self.min_in.setStyleSheet('color: red')
             self.plt_btn.clicked.disconnect()
             self.plt_btn.clicked.connect(self.show_warning)
             self.wrongMinMax=True
             
     
-        if not(self.max_in.text().isnumeric()):
+        if not(self.max_in.text().strip('-').isnumeric()):
             self.max_in.setStyleSheet('color: red')
             self.plt_btn.clicked.disconnect()
             self.plt_btn.clicked.connect(self.show_warning)
@@ -184,8 +183,9 @@ class MplCanvas(FigureCanvasQTAgg):
         
         
 if __name__== "__main__":
+    qt_app = QApplication(sys.argv)
     app = PlotterGUI()
-    app.run()
+    app.show()
     
     
     
