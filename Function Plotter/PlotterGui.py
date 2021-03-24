@@ -166,6 +166,5 @@ class MplCanvas(FigureCanvasQTAgg):
 
 
 if __name__ == "__main__":
- #   qt_app = QApplication(sys.argv)
     app = PlotterGUI()
     app.run()
