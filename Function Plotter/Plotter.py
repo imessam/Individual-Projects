@@ -320,6 +320,7 @@ class Plotter:
 
         X = np.arange(minX, maxX + 1, 1, dtype=np.float64)
         Y = [self.calculate(function, x) for x in X]
-
-        canvas.clear()
-        canvas.plot(X, Y)
+        if(canvas is not None):
+            canvas.clear()
+            canvas.plot(X, Y)
+        return Y
